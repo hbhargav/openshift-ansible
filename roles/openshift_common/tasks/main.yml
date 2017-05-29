@@ -45,6 +45,8 @@
   package:
     name: "{{ openshift.common.service_type }}{{ openshift_pkg_version | default('') | oo_image_tag_to_rpm_version(include_dash=True) }}"
     state: present
+  async: 1200
+  poll: 10
   when: not openshift.common.is_containerized | bool
 
 - name: Set version facts
