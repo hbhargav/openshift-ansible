@@ -76,6 +76,8 @@
 
 - name: Launch instance(s)
   ec2:
+    spot_price: 0.04
+    spot_wait_timeout: 600
     state: present
     region: "{{ deployment_vars[deployment_type].region }}"
     keypair: "{{ deployment_vars[deployment_type].keypair }}"
@@ -87,6 +89,7 @@
     assign_public_ip: "{{ deployment_vars[deployment_type].assign_public_ip }}"
     user_data: "{{ lookup('template', '../templates/user_data.j2') }}"
     wait: yes
+    spot_launch_group: openshift_origin
     instance_tags:
       created-by: "{{ created_by }}"
       clusterid: "{{ cluster }}"
