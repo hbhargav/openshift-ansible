@@ -40,3 +40,4 @@
     openshift_use_calico: "{{ lookup('oo_option', 'use_calico') }}"
     openshift_use_fluentd: "{{ lookup('oo_option', 'use_fluentd') }}"
     openshift_use_dnsmasq: false
+    openshift_master_default_subdomain: 'sysevaluate.com'
